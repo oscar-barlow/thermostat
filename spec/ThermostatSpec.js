@@ -10,8 +10,15 @@ describe("Thermostat", function(){
   });
   describe("up", function(){
     it("should allow temperature to be increased", function(){
-      thermostat.up(1)
+      thermostat.up(1);
       expect(thermostat.temperature).toEqual(21);
+    });
+  });
+
+  describe("down", function(){
+    it("should allow temp to be decreased", function(){
+      thermostat.down(1);
+      expect(thermostat.temperature).toEqual(19);
     });
   });
 
