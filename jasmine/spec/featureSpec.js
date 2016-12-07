@@ -12,6 +12,10 @@ describe("Feature Test", function() {
     expect(thermostat.temperature).toEqual(20);
   });
 
+  it("should initialize with power saving on", function() {
+    expect(thermostat.powerSaving).toBeTruthy();
+  });
+
   it("should increase temperature with up function", function(){
     thermostat.up();
     thermostat.up();
@@ -40,6 +44,7 @@ describe("Feature Test", function() {
   });
 
   it("should not be possible to increase temperature > 32 if power saving is off", function(){
+    thermostat.setPowerSavingOff();
     for (var i = 0; i < 12; i++) {
       thermostat.up();
     }

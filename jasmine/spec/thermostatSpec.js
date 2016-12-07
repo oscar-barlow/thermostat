@@ -46,26 +46,31 @@ describe("Thermostat", function() {
 
   describe("power saving", function(){
 
-  it("should be possible to turn power saving on", function() {
-    thermostat.setPowerSavingOn();
-    expect(thermostat.powerSaving).toBeTruthy();
-  });
+    it("should be possible to turn power saving on", function() {
+      thermostat.setPowerSavingOn();
+      expect(thermostat.powerSaving).toBeTruthy();
+    });
 
+    it("should be possible to turn power saving off", function(){
+      thermostat.setPowerSavingOff();
+      expect(thermostat.powerSaving).toBeFalsy();
+    });
 
-  it("should not be possible to increase temperature >25 if power saving is on", function(){
-    thermostat.setPowerSavingOn();
-    for (var i = 0; i < 5; i++) {
-      thermostat.up();
-    }
-    expect(function(){thermostat.up();}).toThrowError("Power saving on. Max temperature 25 degrees.")
-  });
+    it("should not be possible to increase temperature >25 if power saving is on", function(){
+      thermostat.setPowerSavingOn();
+      for (var i = 0; i < 5; i++) {
+        thermostat.up();
+      }
+      expect(function(){thermostat.up();}).toThrowError("Power saving on. Max temperature 25 degrees.")
+    });
 
-  it("should not be possible to increase temperature > 32 if power saving is off", function(){
-    for (var i = 0; i < 12; i++) {
-      thermostat.up();
-    }
-    expect(function(){thermostat.up();}).toThrowError("Maximum temperature reached.")
-  });
+    it("should not be possible to increase temperature > 32 if power saving is off", function(){
+      thermostat.setPowerSavingOff();
+      for (var i = 0; i < 12; i++) {
+        thermostat.up();
+      }
+      expect(function(){thermostat.up();}).toThrowError("Maximum temperature reached.")
+    });
 
   });
 
