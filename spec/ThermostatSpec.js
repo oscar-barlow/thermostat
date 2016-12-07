@@ -68,17 +68,17 @@ describe("Thermostat", function(){
       for (i = 0; i < 5; i++) {
         thermostat.down();
       }
-      expect(thermostat.energyUsage()).toEqual("low")
+      expect(thermostat.energyUsage()).toEqual("low-usage")
     });
 
     it("should have medium usage between 18 and 24 degrees", function(){
-      expect(thermostat.energyUsage()).toEqual("medium")
+      expect(thermostat.energyUsage()).toEqual("medium-usage")
     });
     it("should return high usage at 25 degrees and above", function(){
       for (i = 0; i < 6; i++) {
         thermostat.up();
       }
-      expect(thermostat.energyUsage()).toEqual("high")
+      expect(thermostat.energyUsage()).toEqual("high-usage")
     });
   });
 
