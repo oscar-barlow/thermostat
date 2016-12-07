@@ -3,6 +3,7 @@
 describe("Feature Test", function() {
   var thermostat;
 
+
   beforeEach(function() {
     thermostat = new Thermostat();
   });
@@ -21,6 +22,13 @@ describe("Feature Test", function() {
     thermostat.down();
     thermostat.down();
     expect(thermostat.temperature).toEqual(18);
+  });
+
+  it("should not be possible to reduce temperature below 10 degrees", function(){
+    for (var i = 0; i < 10; i++) {
+      thermostat.down();
+    }
+    expect(function(){thermostat.down();}).toThrowError("Minimum temperature 10 degrees")
   });
 
 });
