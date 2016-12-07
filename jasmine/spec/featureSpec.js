@@ -39,4 +39,11 @@ describe("Feature Test", function() {
     expect(function(){thermostat.up();}).toThrowError("Power saving on. Max temperature 25 degrees.")
   });
 
+  it("should not be possible to increase temperature > 32 if power saving is off", function(){
+    for (var i = 0; i < 12; i++) {
+      thermostat.up();
+    }
+    expect(function(){thermostat.up();}).toThrowError("Maximum temperature reached.")
+  });
+
 });
