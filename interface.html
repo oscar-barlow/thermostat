@@ -5,11 +5,7 @@
 </head>
 <body>
 
-<style>
-h1.test {
-  font-weight: bold;
-}
-</style>
+<link rel='stylesheet' type='text/css' href='public/style.css'/>
 
   <section>
     <script src="src/Thermostat.js"></script>
@@ -17,14 +13,13 @@ h1.test {
     <script src="interface.js"></script>
 
     <h1 id="title">Thermostat</h1>
-    <h2 id="temp-display"> temp goes here <h2>
+    <h2 id="temp-display" class='medium-usage'> Def <h2>
     <h3 id='power-saving-display'> Power Saving mode is ON</h3>
-    <h3 id="energy-usage" > Energy usage: medium </h3>
 
     <p>
-      <button id="regulation-up">up</button>
-      <button id="regulation-down">down</button>
-      <button id="reset">reset</button>
+      <button id="regulation-up">Up</button>
+      <button id="regulation-down">Down</button>
+      <button id="reset">Reset</button>
       <button id="power-saving">Turn Power Saving OFF</button> </li>
     </p>
   </section>

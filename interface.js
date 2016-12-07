@@ -1,20 +1,10 @@
 
 $(document).ready(function() {
   var thermostat = new Thermostat
-  var PSupdate = function(){
-    $('#power-saving-display').text(function(){
-      if (thermostat.isPowerSaving){
-        return "Power saving mode is ON";
-      } else {
-        return "Power saving mode is OFF";
-      }
-    });
-  }
   $("#temp-display").text(thermostat.temperature);
   $(document).click(function(){
-    $("#temp-display").text(thermostat.temperature);
-    $('#energy-usage').text("Energy Usage: " + thermostat.energyUsage());
-    PSupdate();
+    updateTemperature();
+    updatePowerSaving();
   })
   $("#regulation-up").click(function() {
     thermostat.up();
@@ -36,5 +26,18 @@ $(document).ready(function() {
     $('#power-saving').text("Turn Power Saving "+message);
   })
 
+  function updateTemperature(){
+    $("#temp-display").text(thermostat.temperature);
+    $('#temp-display').attr('class', thermostat.energyUsage());
+  }
+  function updatePowerSaving() {
+    $('#power-saving-display').text(function(){
+      if (thermostat.isPowerSaving){
+        return "Power saving mode is ON";
+      } else {
+        return "Power saving mode is OFF";
+      }
+    });
+  }
 
 });
