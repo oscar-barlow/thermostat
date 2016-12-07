@@ -44,6 +44,13 @@ Thermostat.prototype.energyUsage = function(){
   }
 };
 
+Thermostat.prototype.autoRegulate = function(){
+  if (this.isPowerSaving && this.temperature > this.POWER_SAVING_MAXIMUM){
+    this.temperature = this.POWER_SAVING_MAXIMUM;
+  }
+};
+
 Thermostat.prototype.changePowerSavingMode = function(){
   this.isPowerSaving = !this.isPowerSaving;
-}
+  this.autoRegulate();
+};

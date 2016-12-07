@@ -54,6 +54,15 @@ describe("Thermostat", function(){
     expect(thermostat.isPowerSaving).toBeFalsy();
   });
 
+  it('if temperature above 25 when user turns power-saving mode on, the temperature should go down to 25', function(){
+    thermostat.changePowerSavingMode();
+    for (i = 0; i< 10; i++) {
+      thermostat.up();
+    }
+    thermostat.changePowerSavingMode();
+    expect(thermostat.temperature).toEqual(25);
+  });
+
   describe("energyUsage", function(){
     it("should return low usage if temp below 18", function(){
       for (i = 0; i < 5; i++) {
