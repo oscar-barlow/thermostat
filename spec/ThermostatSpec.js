@@ -14,11 +14,19 @@ describe("Thermostat", function(){
       expect(thermostat.temperature).toEqual(21);
     });
 
-    it("should not increase above 25", function(){
+    it("should not increase above 25 if power-saving mode on", function(){
       for(var i = 0; i< 30; i++){
         thermostat.up();
       }
       expect(thermostat.temperature).toEqual(25);
+    });
+
+    it("should not increase above 32 if power-saving mode off", function(){
+      thermostat.powerSaving = false
+      for(var i = 0; i < 30; i ++){
+        thermostat.up();
+      }
+      expect(thermostat.temperature).toEqual(32);
     });
   });
 

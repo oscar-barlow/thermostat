@@ -1,11 +1,17 @@
 var Thermostat = function(){
   this.temperature = 20;
   this.MINIMUM_TEMPERATURE = 10;
+  this.powerSaving = true
 };
 
 Thermostat.prototype.isMaxTemperature = function(){
-  return this.temperature < 25;
-}
+  if (this.powerSaving) {
+    return this.temperature < 25;
+  } else {
+    return this.temperature < 32;
+  }
+
+};
 
 Thermostat.prototype.up = function(){
   if (this.isMaxTemperature()){
