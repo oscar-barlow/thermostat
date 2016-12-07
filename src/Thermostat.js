@@ -3,8 +3,14 @@ var Thermostat = function(){
   this.MINIMUM_TEMPERATURE = 10;
 };
 
+Thermostat.prototype.isMaxTemperature = function(){
+  return this.temperature < 25;
+}
+
 Thermostat.prototype.up = function(){
-  this.temperature += 1;
+  if (this.isMaxTemperature()){
+    this.temperature += 1;
+  }
 };
 
 Thermostat.prototype.down = function(){

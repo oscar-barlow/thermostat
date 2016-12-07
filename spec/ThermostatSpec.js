@@ -13,6 +13,13 @@ describe("Thermostat", function(){
       thermostat.up();
       expect(thermostat.temperature).toEqual(21);
     });
+
+    it("should not increase above 25", function(){
+      for(var i = 0; i< 30; i++){
+        thermostat.up();
+      }
+      expect(thermostat.temperature).toEqual(25);
+    });
   });
 
   describe("down", function(){
