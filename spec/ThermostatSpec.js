@@ -43,4 +43,10 @@ describe("Thermostat", function(){
     });
   });
 
+  it("should have a reset function", function(){
+    thermostat.down();
+    thermostat.reset();
+    expect(thermostat.temperature).toEqual(20);
+  });
+
 });
