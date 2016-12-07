@@ -31,4 +31,12 @@ describe("Feature Test", function() {
     expect(function(){thermostat.down();}).toThrowError("Minimum temperature 10 degrees")
   });
 
+  it("should not be possible to increase temperature >25 if power saving is on", function(){
+    thermostat.setPowerSavingOn();
+    for (var i = 0; i < 5; i++) {
+      thermostat.up();
+    }
+    expect(function(){thermostat.up();}).toThrowError("Power saving on. Max temperature 25 degrees.")
+  });
+
 });
