@@ -18,12 +18,7 @@ Thermostat.prototype.up = function(){
     throw new Error("Maximum temperature reached.")
   }
   this.temperature += 1;
-  if (this.temperature > LOW_USAGE_THRESHOLD) {
-    this.usage = "medium-usage";
-  };
-  if (this.temperature > HIGH_USAGE_THRESHOLD) {
-    this.usage = "high-usage";
-  };
+  this.setUsage();
 };
 
 Thermostat.prototype.down = function() {
@@ -31,12 +26,7 @@ Thermostat.prototype.down = function() {
     throw new Error("Minimum temperature 10 degrees")
   }
   this.temperature -= 1;
-  if (this.temperature <= LOW_USAGE_THRESHOLD) {
-    this.usage = "low-usage";
-  };
-  if (this.temperature <= HIGH_USAGE_THRESHOLD && this.temperature > LOW_USAGE_THRESHOLD) {
-    this.usage = "medium-usage";
-  };
+  this.setUsage();
 };
 
 Thermostat.prototype.setPowerSaving = function(boolean){
@@ -45,4 +35,16 @@ Thermostat.prototype.setPowerSaving = function(boolean){
 
 Thermostat.prototype.reset = function(){
   this.temperature = 20;
+};
+
+Thermostat.prototype.setUsage = function(){
+  if (this.temperature <= LOW_USAGE_THRESHOLD) {
+    this.usage = "low-usage";
+  };
+  if (this.temperature <= HIGH_USAGE_THRESHOLD && this.temperature > LOW_USAGE_THRESHOLD) {
+    this.usage = "medium-usage";
+  };
+  if (this.temperature > HIGH_USAGE_THRESHOLD) {
+    this.usage = "high-usage";
+  };
 };
