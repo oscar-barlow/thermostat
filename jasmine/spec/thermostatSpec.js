@@ -17,6 +17,10 @@ describe("Thermostat", function() {
       expect(thermostat.powerSaving).toBeTruthy();
     });
 
+    it ("should initialize with usage set to medium-usage", function(){
+      expect(thermostat.usage).toEqual("medium-usage")
+    });
+
   });
 
   describe("#up", function(){
@@ -81,5 +85,16 @@ describe("Thermostat", function() {
     });
 
   });
+
+  // describe("usage", function(){
+  //
+  //   it("should return low usage for temps <18 degrees", function(){
+  //     for (var i = 0; i < 3; i++) {
+  //       thermostat.down();
+  //     }
+  //     expect(thermostat.usage).toEqual("low usage");
+  //   });
+  //
+  // });
 
 });

@@ -16,6 +16,10 @@ describe("Feature Test", function() {
     expect(thermostat.powerSaving).toBeTruthy();
   });
 
+  it ("should initialize with usage set to medium-usage", function(){
+    expect(thermostat.usage).toEqual("medium-usage")
+  });
+
   it("should increase temperature with up function", function(){
     thermostat.up();
     thermostat.up();
@@ -50,5 +54,12 @@ describe("Feature Test", function() {
     }
     expect(function(){thermostat.up();}).toThrowError("Maximum temperature reached.")
   });
+
+  // it("should return low usage for temps <18 degrees", function(){
+  //   for (var i = 0; i < 3; i++) {
+  //     thermostat.down();
+  //   }
+  //   expect(thermostat.usage).toEqual("low usage");
+  // });
 
 });
