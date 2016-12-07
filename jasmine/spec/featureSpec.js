@@ -13,7 +13,14 @@ describe("Feature Test", function() {
 
   it("should increase temperature with up function", function(){
     thermostat.up();
-    expect(thermostat.up()).toEqual(22);
+    thermostat.up();
+    expect(thermostat.temperature).toEqual(22);
+  });
+
+  it("should decrease temperature with down function", function(){
+    thermostat.down();
+    thermostat.down();
+    expect(thermostat.temperature).toEqual(18);
   });
 
 });
