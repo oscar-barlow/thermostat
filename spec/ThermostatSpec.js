@@ -49,4 +49,13 @@ describe("Thermostat", function(){
     expect(thermostat.temperature).toEqual(20);
   });
 
+  describe("energyUsage", function(){
+    it("should return low usage if temp below 18", function(){
+      for (i = 0; i < 5; i++) {
+        thermostat.down();
+      }
+      expect(thermostat.energyUsage()).toEqual("low")
+    });
+  });
+
 });
