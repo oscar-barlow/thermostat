@@ -43,3 +43,7 @@ Thermostat.prototype.energyUsage = function(){
     return "high-usage";
   }
 };
+
+Thermostat.prototype.changePowerSavingMode = function(){
+  this.isPowerSaving = !this.isPowerSaving;
+}

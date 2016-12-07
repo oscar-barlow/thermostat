@@ -49,6 +49,11 @@ describe("Thermostat", function(){
     expect(thermostat.temperature).toEqual(thermostat.DEFAULT_TEMPERATURE);
   });
 
+  it('should be able to change the powersaving mode', function(){
+    thermostat.changePowerSavingMode();
+    expect(thermostat.isPowerSaving).toBeFalsy();
+  });
+
   describe("energyUsage", function(){
     it("should return low usage if temp below 18", function(){
       for (i = 0; i < 5; i++) {
@@ -67,5 +72,6 @@ describe("Thermostat", function(){
       expect(thermostat.energyUsage()).toEqual("high-usage")
     });
   });
+
 
 });
