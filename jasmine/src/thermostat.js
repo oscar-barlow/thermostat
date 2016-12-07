@@ -23,6 +23,9 @@ Thermostat.prototype.down = function() {
     throw new Error("Minimum temperature 10 degrees")
   }
   this.temperature -= 1;
+  if (this.temperature < 18) {
+    this.usage = "low-usage"
+  };
 };
 
 Thermostat.prototype.setPowerSaving = function(boolean){

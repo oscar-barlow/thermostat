@@ -86,15 +86,15 @@ describe("Thermostat", function() {
 
   });
 
-  // describe("usage", function(){
-  //
-  //   it("should return low usage for temps <18 degrees", function(){
-  //     for (var i = 0; i < 3; i++) {
-  //       thermostat.down();
-  //     }
-  //     expect(thermostat.usage).toEqual("low usage");
-  //   });
-  //
-  // });
+  describe("usage", function(){
+
+    it("should return low usage for temps <18 degrees", function(){
+      for (var i = 0; i < 3; i++) {
+        thermostat.down();
+      }
+      expect(thermostat.usage).toEqual("low-usage");
+    });
+
+  });
 
 });
