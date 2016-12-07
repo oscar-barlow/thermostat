@@ -1,6 +1,7 @@
 function Thermostat(){
   this.temperature = 20;
   this.powerSaving = true;
+  this.usage = "medium-usage";
 };
 
 const MINIMUM_TEMPERATURE = 10;
