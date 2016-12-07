@@ -11,20 +11,13 @@ const LOW_USAGE_THRESHOLD = 17;
 const HIGH_USAGE_THRESHOLD = 25;
 
 Thermostat.prototype.up = function(){
-  if (this.powerSaving === true && this.temperature >= POWER_SAVING_MAXIMUM_TEMPERATURE ) {
-    throw new Error("Power saving on. Max temperature 25 degrees.")
-  }
-  if (this.temperature >= MAXIMUM_TEMPERATURE ) {
-    throw new Error("Maximum temperature reached.")
-  }
+  this.checkMaxMin();
   this.temperature += 1;
   this.setUsage();
 };
 
 Thermostat.prototype.down = function() {
-  if (this.temperature <= MINIMUM_TEMPERATURE) {
-    throw new Error("Minimum temperature 10 degrees")
-  }
+  this.checkMaxMin();
   this.temperature -= 1;
   this.setUsage();
 };
@@ -35,6 +28,18 @@ Thermostat.prototype.setPowerSaving = function(boolean){
 
 Thermostat.prototype.reset = function(){
   this.temperature = 20;
+};
+
+Thermostat.prototype.checkMaxMin = function() {
+  if (this.powerSaving === true && this.temperature >= POWER_SAVING_MAXIMUM_TEMPERATURE ) {
+    throw new Error("Power saving on. Max temperature 25 degrees.")
+  };
+  if (this.temperature >= MAXIMUM_TEMPERATURE ) {
+    throw new Error("Maximum temperature reached.")
+  };
+  if (this.temperature <= MINIMUM_TEMPERATURE) {
+    throw new Error("Minimum temperature 10 degrees")
+  };
 };
 
 Thermostat.prototype.setUsage = function(){
