@@ -5,3 +5,7 @@ var Thermostat = function() {
 Thermostat.prototype.increase = function(value) {
   this.degrees += value;
 };
+
+Thermostat.prototype.decrease = function(value) {
+  this.degrees -= value;
+  };
