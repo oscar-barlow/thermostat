@@ -88,11 +88,19 @@ describe("Thermostat", function() {
 
   describe("usage", function(){
 
-    it("should return low usage for temps <18 degrees", function(){
+    it("should return low-usage for temps <18 degrees", function(){
       for (var i = 0; i < 3; i++) {
         thermostat.down();
       }
       expect(thermostat.usage).toEqual("low-usage");
+    });
+
+    it("should return medium-usage if decreased, then raised above 17 degrees", function(){
+      for (var i = 0; i < 3; i++) {
+        thermostat.down();
+      }
+      thermostat.up();
+      expect(thermostat.usage).toEqual("medium-usage");
     });
 
   });
