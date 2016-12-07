@@ -7,31 +7,50 @@ describe("Thermostat", function() {
     thermostat = new Thermostat();
   });
 
-  it("should initialize with a temperature property set to 20", function() {
-    expect(thermostat.temperature).toEqual(20);
+  describe("#new", function(){
+
+    it("should initialize with a temperature property set to 20", function() {
+      expect(thermostat.temperature).toEqual(20);
+    });
+
+    it("should initialize with powerSaving set to true", function() {
+      expect(thermostat.powerSaving).toBeTruthy();
+    });
+
   });
 
-  it("should raise the temperature when up is called", function(){
-    thermostat.up();
-    expect(thermostat.temperature).toEqual(21);
+  describe("#up", function(){
+
+    it("should raise the temperature when up is called", function(){
+      thermostat.up();
+      expect(thermostat.temperature).toEqual(21);
+    });
+
   });
 
-  it("should decrease the temperature when down is called", function(){
-    thermostat.down();
-    expect(thermostat.temperature).toEqual(19);
-  });
+  describe("#down", function(){
 
-  it("should not be possible to reduce temperature below 10 degrees", function(){
-    for (var i = 0; i < 10; i++) {
+    it("should decrease the temperature when down is called", function(){
       thermostat.down();
-    }
-    expect(function(){thermostat.down();}).toThrowError("Minimum temperature 10 degrees")
+      expect(thermostat.temperature).toEqual(19);
+    });
+
+    it("should not be possible to reduce temperature below 10 degrees", function(){
+      for (var i = 0; i < 10; i++) {
+        thermostat.down();
+      }
+      expect(function(){thermostat.down();}).toThrowError("Minimum temperature 10 degrees")
+    });
+
   });
+
+  describe("power saving", function(){
 
   it("should be possible to turn power saving on", function() {
     thermostat.setPowerSavingOn();
     expect(thermostat.powerSaving).toBeTruthy();
   });
+
 
   it("should not be possible to increase temperature >25 if power saving is on", function(){
     thermostat.setPowerSavingOn();
@@ -46,6 +65,8 @@ describe("Thermostat", function() {
       thermostat.up();
     }
     expect(function(){thermostat.up();}).toThrowError("Maximum temperature reached.")
+  });
+
   });
 
 });
