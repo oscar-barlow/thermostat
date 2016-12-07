@@ -47,17 +47,17 @@ describe("Thermostat", function() {
   describe("power saving", function(){
 
     it("should be possible to turn power saving on", function() {
-      thermostat.setPowerSavingOn();
+      thermostat.setPowerSaving(true);
       expect(thermostat.powerSaving).toBeTruthy();
     });
 
     it("should be possible to turn power saving off", function(){
-      thermostat.setPowerSavingOff();
+      thermostat.setPowerSaving(false);
       expect(thermostat.powerSaving).toBeFalsy();
     });
 
     it("should not be possible to increase temperature >25 if power saving is on", function(){
-      thermostat.setPowerSavingOn();
+      thermostat.setPowerSaving(true);
       for (var i = 0; i < 5; i++) {
         thermostat.up();
       }
@@ -65,7 +65,7 @@ describe("Thermostat", function() {
     });
 
     it("should not be possible to increase temperature > 32 if power saving is off", function(){
-      thermostat.setPowerSavingOff();
+      thermostat.setPowerSaving(false);
       for (var i = 0; i < 12; i++) {
         thermostat.up();
       }
