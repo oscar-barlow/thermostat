@@ -36,11 +36,11 @@ Thermostat.prototype.reset = function(){
 
 Thermostat.prototype.energyUsage = function(){
   if (this.temperature < this.LOW_ENERGY_USAGE_LIMIT){
-    return "low-usage";
+    return "low";
   } else if (this.temperature < this.MEDIUM_ENERGY_USAGE_LIMIT){
-    return "medium-usage";
+    return "medium";
   } else {
-    return "high-usage";
+    return "high";
   }
 };
 
