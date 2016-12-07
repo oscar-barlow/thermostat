@@ -15,3 +15,7 @@ Thermostat.prototype.decrease = function(value) {
     this.degrees -= value;
   }
 };
+
+Thermostat.prototype.reset = function(){
+  this.degrees = 20;
+};
