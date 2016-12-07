@@ -1,14 +1,19 @@
 var Thermostat = function(){
-  this.temperature = 20;
+  this.DEFAULT_TEMPERATURE = 20;
   this.MINIMUM_TEMPERATURE = 10;
-  this.powerSaving = true
+  this.LOW_ENERGY_USAGE_LIMIT = 18
+  this.MEDIUM_ENERGY_USAGE_LIMIT = 25;
+  this.POWER_SAVING_MAXIMUM = 25;
+  this.ABSOLUTE_MAXIMUM = 32;
+  this.temperature = this.DEFAULT_TEMPERATURE;
+  this.isPowerSaving = true;
 };
 
 Thermostat.prototype.isMaxTemperature = function(){
-  if (this.powerSaving) {
-    return this.temperature < 25;
+  if (this.isPowerSaving) {
+    return this.temperature < this.POWER_SAVING_MAXIMUM;
   } else {
-    return this.temperature < 32;
+    return this.temperature < this.ABSOLUTE_MAXIMUM;
   }
 
 };
@@ -26,13 +31,13 @@ Thermostat.prototype.down = function(){
 };
 
 Thermostat.prototype.reset = function(){
-  this.temperature = 20;
+  this.temperature = this.DEFAULT_TEMPERATURE;
 };
 
 Thermostat.prototype.energyUsage = function(){
-  if (this.temperature < 18){
+  if (this.temperature < this.LOW_ENERGY_USAGE_LIMIT){
     return "low-usage";
-  } else if (this.temperature < 25){
+  } else if (this.temperature < this.MEDIUM_ENERGY_USAGE_LIMIT){
     return "medium-usage";
   } else {
     return "high-usage";
