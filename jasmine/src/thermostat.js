@@ -8,6 +8,7 @@ const MINIMUM_TEMPERATURE = 10;
 const POWER_SAVING_MAXIMUM_TEMPERATURE = 25;
 const MAXIMUM_TEMPERATURE = 32;
 const LOW_USAGE_THRESHOLD = 17;
+const HIGH_USAGE_THRESHOLD = 25;
 
 Thermostat.prototype.up = function(){
   if (this.powerSaving === true && this.temperature >= POWER_SAVING_MAXIMUM_TEMPERATURE ) {
@@ -20,6 +21,9 @@ Thermostat.prototype.up = function(){
   if (this.temperature > LOW_USAGE_THRESHOLD) {
     this.usage = "medium-usage";
   };
+  if (this.temperature > HIGH_USAGE_THRESHOLD) {
+    this.usage = "high-usage";
+  };
 };
 
 Thermostat.prototype.down = function() {
@@ -29,6 +33,9 @@ Thermostat.prototype.down = function() {
   this.temperature -= 1;
   if (this.temperature <= LOW_USAGE_THRESHOLD) {
     this.usage = "low-usage";
+  };
+  if (this.temperature <= HIGH_USAGE_THRESHOLD && this.temperature > LOW_USAGE_THRESHOLD) {
+    this.usage = "medium-usage";
   };
 };
 

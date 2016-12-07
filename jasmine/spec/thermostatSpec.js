@@ -103,6 +103,23 @@ describe("Thermostat", function() {
       expect(thermostat.usage).toEqual("medium-usage");
     });
 
+    it("should return high-usage for temps >25 degrees", function(){
+      thermostat.setPowerSaving(false);
+      for (var i = 0; i < 6; i++) {
+        thermostat.up();
+      }
+      expect(thermostat.usage).toEqual("high-usage");
+    });
+
+    it("should return medium-usage if increased, then decreased below 25 degrees", function(){
+      thermostat.setPowerSaving(false);
+      for (var i = 0; i < 6; i++) {
+        thermostat.up();
+      }
+      thermostat.down();
+      expect(thermostat.usage).toEqual("medium-usage");
+    });
+
   });
 
 });
