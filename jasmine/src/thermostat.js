@@ -27,3 +27,7 @@ Thermostat.prototype.down = function() {
 Thermostat.prototype.setPowerSaving = function(boolean){
   this.powerSaving = boolean;
 };
+
+Thermostat.prototype.reset = function(){
+  this.temperature = 20;
+};

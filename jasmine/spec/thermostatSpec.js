@@ -44,7 +44,15 @@ describe("Thermostat", function() {
 
   });
 
-  describe("power saving", function(){
+  describe("#reset", function(){
+    it("should reset temperature to 20", function(){
+      thermostat.up();
+      thermostat.reset();
+      expect(thermostat.temperature).toEqual(20)
+    });
+  });
+
+  describe("#power saving", function(){
 
     it("should be possible to turn power saving on", function() {
       thermostat.setPowerSaving(true);
