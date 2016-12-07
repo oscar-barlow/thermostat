@@ -54,7 +54,11 @@ describe("Thermostat", function(){
       for (i = 0; i < 5; i++) {
         thermostat.down();
       }
-      expect(thermostat.energyUsage()).toEqual("low")
+      expect(thermostat.energyUsage()).toEqual("low-usage")
+    });
+
+    it("should have medium usage under 25 degrees", function(){
+      expect(thermostat.energyUsage()).toEqual("medium-usage")
     });
   });
 
