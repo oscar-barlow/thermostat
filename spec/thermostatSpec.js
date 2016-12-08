@@ -46,7 +46,7 @@ describe('Thermostat', function() {
       }).toThrowError("Power saving on. Maximum temperature reached.");
     });
 
-    xit('cannot be increased over 32 when power saving is off', function(){
+    it('cannot be increased over 32 when power saving is off', function(){
       expect(function() {
         thermostat.powerSaving = false;
         for (var i = 0; i < 13; i++) {
