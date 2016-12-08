@@ -33,6 +33,14 @@ describe('Thermostat', function() {
       expect(thermostat.degrees).toBe(19);
     });
 
+    it('cannot be increased over 25 when power saving is on', function(){
+      expect(function() {
+        for (var i = 0; i < 6; i++) {
+          thermostat.increase();
+        }
+      }).toThrowError("Power saving on. Maximum temperature reached.");
+    });
+
     it('cannot be decreased below the minimum temperature', function() {
       expect(function() {
         for (var i = 0; i < 11; i++) {
