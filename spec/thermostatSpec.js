@@ -63,4 +63,12 @@ describe('Thermostat', function() {
       }).toThrowError("Temperature cannot be decreased any further.");
     });
   });
+
+  describe('energy usage', function(){
+
+    it("returns medium-usage if temperature is >17 and <25", function(){
+      expect(thermostat.usage).toEqual('medium-usage');
+    });
+
+  });
 });

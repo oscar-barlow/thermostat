@@ -2,6 +2,7 @@
 var Thermostat = function() {
   this.degrees = 20;
   this.powerSaving = true;
+  this.usage = "medium-usage";
 };
 
 Thermostat.prototype.increase = function() {
