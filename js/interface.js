@@ -37,4 +37,10 @@ $( document ).ready(function(){
     showActive('#power-saving-off');
     clearActive('#power-saving-on');
   });
+
+  $('#reset').click(function(){
+    thermostat.reset();
+    updateDisplay();
+  });
+
 });
