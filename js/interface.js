@@ -5,6 +5,11 @@ $( document ).ready(function(){
     $('#display').text(thermostat.degrees);
   };
 
+  var showOn = function(button) {
+    $(button).addClass('blue');
+  };
+  
+  showOn('#power-saving-on');
   updateDisplay();
 
   $('#temp-up').click(function() {
@@ -15,5 +20,10 @@ $( document ).ready(function(){
   $('#temp-down').click(function() {
     thermostat.decrease();
     updateDisplay();
+  });
+
+  $('#power-saving-on').click(function() {
+    thermostat.setPowerSaving(true);
+    showOn('#power-saving-on');
   });
 });
