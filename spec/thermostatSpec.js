@@ -24,9 +24,11 @@ describe('Thermostat', function() {
   describe('changing temperatures', function() {
 
     it('can increase temperature', function() {
-      thermostat.increase(1);
+      thermostat.increase();
       expect(thermostat.degrees).toBe(21);
     });
+
+
 
     it('can decrease temperature', function() {
       thermostat.decrease(1);

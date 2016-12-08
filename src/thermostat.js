@@ -4,8 +4,8 @@ var Thermostat = function() {
   this.powerSaving = true;
 };
 
-Thermostat.prototype.increase = function(value) {
-  this.degrees += value;
+Thermostat.prototype.increase = function() {
+  this.degrees += 1;
 };
 
 Thermostat.prototype.decrease = function(value) {
