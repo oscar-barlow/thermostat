@@ -35,6 +35,15 @@
 
   <script src="src/thermostat.js"></script>
   <script src="jquery.js"></script>
+  <script>
+    $( document ).ready(function() {
+      alert("Don't touch the thermostat!");
+        $("button").click(function( event ) {
+          alert( "I told you not to touch the thermostat!" )
+          $( this ).hide( "slow" )
+        });
+    });
+  </script>
 
 </body>
 </html>
