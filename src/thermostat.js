@@ -6,14 +6,7 @@ var Thermostat = function() {
 };
 
 Thermostat.prototype.increase = function() {
-  const MAXIMUM_TEMPERATURE = 32;
-  const POWER_SAVING_MAXIMUM_TEMPERATURE = 25;
-  if (this.degrees >= POWER_SAVING_MAXIMUM_TEMPERATURE && this.powerSaving === true) {
-    throw new Error("Power saving on. Maximum temperature reached.");
-  }
-  if (this.degrees >= MAXIMUM_TEMPERATURE && this.powerSaving === false) {
-    throw new Error("Power saving off. Maximum temperature reached.")
-  }
+  this.checkMaxMin();
   this.degrees += 1;
   if (this.degrees > 25) {
     this.usage = "high-usage";
@@ -21,10 +14,7 @@ Thermostat.prototype.increase = function() {
 };
 
 Thermostat.prototype.decrease = function() {
-  const MINIMUM_TEMPERATURE = 10;
-  if (this.degrees <= MINIMUM_TEMPERATURE) {
-    throw new Error("Temperature cannot be decreased any further.");
-  }
+  this.checkMaxMin();
   this.degrees -= 1;
   if (this.degrees < 18) {
     this.usage = "low-usage";
@@ -38,3 +28,18 @@ Thermostat.prototype.reset = function(){
 Thermostat.prototype.setPowerSaving = function(boolean) {
   this.powerSaving = boolean;
 }
+
+Thermostat.prototype.checkMaxMin = function() {
+  const MAXIMUM_TEMPERATURE = 32;
+  const POWER_SAVING_MAXIMUM_TEMPERATURE = 25;
+  const MINIMUM_TEMPERATURE = 10;
+  if (this.degrees >= POWER_SAVING_MAXIMUM_TEMPERATURE && this.powerSaving === true) {
+    throw new Error("Power saving on. Maximum temperature reached.");
+  }
+  if (this.degrees >= MAXIMUM_TEMPERATURE && this.powerSaving === false) {
+    throw new Error("Power saving off. Maximum temperature reached.")
+  }
+  if (this.degrees <= MINIMUM_TEMPERATURE) {
+    throw new Error("Temperature cannot be decreased any further.");
+  }
+};
