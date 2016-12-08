@@ -5,26 +5,31 @@
 <head>
   <title> Thermostat </title>
   <script src="src/thermostat.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
-  <div id='thermostat' >
+  <div id='thermostat'>
     <div id='display'>
       Temperature = ""
+      <br />
       Energy Usage = ""
     </div>
     <div id='controls'>
       <div id='temperature'>
+        Temperature
         <button type='button'> + </button>
         <button type='button'> - </button>
       </div>
-      <div id='power saving'>
-        <button type='button'> On </button>
-        <button type='button'> Off </button>
-      </div>
       <div id='reset'>
         <button type='button'> Reset </button>
+      </div>
+      <div id='power saving'>
+        Power Saving
+        <br />
+        <button type='button'> On </button>
+        <button type='button'> Off </button>
       </div>
     </div>
   </div>
