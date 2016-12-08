@@ -32,6 +32,9 @@ Thermostat.prototype.decrease = function() {
   if (this.degrees < 18) {
     this.usage = "low-usage";
   }
+  if (this.degrees > 17 && this.degrees <= 25) {
+    this.usage = "medium-usage";
+  }
 };
 
 Thermostat.prototype.reset = function(){
