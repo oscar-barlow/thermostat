@@ -17,6 +17,10 @@ describe('Thermostat', function() {
     expect(thermostat.degrees).toBe(20);
   });
 
+  it ('starts with power saving on', function() {
+    expect(thermostat.powerSaving).toBeTruthy();
+  });
+
   describe('changing temperatures', function() {
 
     it('can increase temperature', function() {
