@@ -5,11 +5,11 @@ $( document ).ready(function(){
     $('#display').text(thermostat.degrees);
   };
 
-  var showOn = function(button) {
+  var showActive = function(button) {
     $(button).addClass('blue');
   };
-  
-  showOn('#power-saving-on');
+
+  showActive('#power-saving-on');
   updateDisplay();
 
   $('#temp-up').click(function() {
@@ -24,6 +24,11 @@ $( document ).ready(function(){
 
   $('#power-saving-on').click(function() {
     thermostat.setPowerSaving(true);
-    showOn('#power-saving-on');
+    showActive('#power-saving-on');
+  });
+
+  $('#power-saving-off').click(function() {
+    thermostat.setPowerSaving(false);
+    showActive('#power-saving-off');
   });
 });
