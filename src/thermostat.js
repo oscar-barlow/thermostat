@@ -11,6 +11,9 @@ Thermostat.prototype.increase = function() {
   if (this.degrees > 25) {
     this.usage = "high-usage";
   }
+  if (this.degrees > 17 && this.degrees <= 25) {
+    this.usage = "medium-usage";
+  }
 };
 
 Thermostat.prototype.decrease = function() {
@@ -18,6 +21,9 @@ Thermostat.prototype.decrease = function() {
   this.degrees -= 1;
   if (this.degrees < 18) {
     this.usage = "low-usage";
+  }
+  if (this.degrees > 17 && this.degrees <= 25) {
+    this.usage = "medium-usage";
   }
 };
 
