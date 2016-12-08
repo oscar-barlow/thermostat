@@ -15,6 +15,9 @@ Thermostat.prototype.increase = function() {
     throw new Error("Power saving off. Maximum temperature reached.")
   }
   this.degrees += 1;
+  if (this.degrees > 25) {
+    this.usage = "high-usage";
+  }
 };
 
 Thermostat.prototype.decrease = function() {

@@ -77,5 +77,13 @@ describe('Thermostat', function() {
       expect(thermostat.usage).toEqual('low-usage');
     });
 
+    it("returns high-usage if temperature is >25", function(){
+      thermostat.powerSaving = false;
+      for (var i = 0; i < 6; i++) {
+        thermostat.increase();
+      }
+      expect(thermostat.usage).toEqual("high-usage");
+    });
+
   });
 });
