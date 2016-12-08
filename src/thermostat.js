@@ -8,23 +8,13 @@ var Thermostat = function() {
 Thermostat.prototype.increase = function() {
   this.checkMaxMin();
   this.degrees += 1;
-  if (this.degrees > 25) {
-    this.usage = "high-usage";
-  }
-  if (this.degrees > 17 && this.degrees <= 25) {
-    this.usage = "medium-usage";
-  }
+  this.setUsage();
 };
 
 Thermostat.prototype.decrease = function() {
   this.checkMaxMin();
   this.degrees -= 1;
-  if (this.degrees < 18) {
-    this.usage = "low-usage";
-  }
-  if (this.degrees > 17 && this.degrees <= 25) {
-    this.usage = "medium-usage";
-  }
+  this.setUsage();
 };
 
 Thermostat.prototype.reset = function(){
@@ -47,5 +37,15 @@ Thermostat.prototype.checkMaxMin = function() {
   }
   if (this.degrees <= MINIMUM_TEMPERATURE) {
     throw new Error("Temperature cannot be decreased any further.");
+  }
+};
+
+Thermostat.prototype.setUsage = function(){
+  if (this.degrees > 25) {
+    this.usage = "high-usage";
+  } else if (this.degrees < 18) {
+    this.usage = "low-usage";
+  } else {
+    this.usage = "medium-usage";
   }
 };
