@@ -11,6 +11,8 @@
 
   <div id='thermostat'>
     <div id='display'>
+      <div id='room-temperature'></div>
+      <div id='city-temperature'></div>
     </div>
     <div id='controls'>
       <div id='temperature'>
@@ -28,11 +30,19 @@
         <button type='button' id='power-saving-off'> Off </button>
       </div>
     </div>
-  </div>
+    <section>
+    <select id="current-city">
+      <option value="london">London</option>
+      <option value="newyork">New York</option>
+      <option value="paris">Paris</option>
+      <option value="tokyo">Tokyo</option>
+    </select>
+  </section>
+</div>
 
-  <script src="src/thermostat.js"></script>
-  <script src="js/jquery.js"></script>
-  <script src="js/interface.js"></script>
+<script src="src/thermostat.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/interface.js"></script>
 
 </body>
 </html>
