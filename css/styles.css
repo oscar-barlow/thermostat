@@ -13,7 +13,7 @@
   font-family: "Lucida Console", Monaco5, monospace;
   padding: 5px;
   border: 2px solid darkgreen;
-  background-color: lightgreen;
+  background-color: palegreen;
   float: left;
 }
 
@@ -32,5 +32,12 @@
 .blue {
   font-weight: bold;
   color: blue;
+}
 
+.red {
+  color: red;
+}
+
+.green {
+  color: darkgreen;
 }

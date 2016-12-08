@@ -3,6 +3,24 @@ $( document ).ready(function(){
 
   var updateDisplay = function() {
     $('#display').text(thermostat.degrees);
+    /*
+    if thermostat usage = high
+    add this class
+    elsif low
+    else medium
+    */
+
+    if (thermostat.usage === 'high-usage') {
+      // add class red
+      $('#display').addClass('red');
+    } else if (thermostat.usage === 'low-usage') {
+      // add class green
+      $('#display').addClass('green');
+    } else {
+      $('#display').removeClass('red');
+      $('#display').removeClass('green');
+      // remove class red and remove class green
+    }
   };
 
   var showActive = function(button) {
