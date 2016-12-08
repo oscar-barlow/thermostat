@@ -5,6 +5,7 @@ var Thermostat = function() {
 };
 
 Thermostat.prototype.increase = function() {
+  const MAXIMUM_TEMPERATURE = 32;
   const POWER_SAVING_MAXIMUM_TEMPERATURE = 25;
   if (this.degrees >= POWER_SAVING_MAXIMUM_TEMPERATURE) {
     throw new Error("Power saving on. Maximum temperature reached.");
@@ -23,3 +24,7 @@ Thermostat.prototype.decrease = function() {
 Thermostat.prototype.reset = function(){
   this.degrees = 20;
 };
+
+Thermostat.prototype.setPowerSaving = function(boolean) {
+  this.powerSaving = boolean;
+}

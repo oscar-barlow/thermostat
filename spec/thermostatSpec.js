@@ -21,6 +21,11 @@ describe('Thermostat', function() {
     expect(thermostat.powerSaving).toBeTruthy();
   });
 
+  it ('can turn power saving off', function() {
+    thermostat.setPowerSaving(false);
+    expect(thermostat.powerSaving).toBeFalsy();
+  });
+
   describe('changing temperatures', function() {
 
     it('can increase temperature', function() {
@@ -39,6 +44,15 @@ describe('Thermostat', function() {
           thermostat.increase();
         }
       }).toThrowError("Power saving on. Maximum temperature reached.");
+    });
+
+    xit('cannot be increased over 32 when power saving is off', function(){
+      expect(function() {
+        thermostat.powerSaving = false;
+        for (var i = 0; i < 13; i++) {
+          thermostat.increase();
+        }
+      }).toThrowError("Power saving off. Maximum temperature reached.");
     });
 
     it('cannot be decreased below the minimum temperature', function() {
