@@ -28,16 +28,16 @@ describe('Thermostat', function() {
       expect(thermostat.degrees).toBe(21);
     });
 
-
-
     it('can decrease temperature', function() {
-      thermostat.decrease(1);
+      thermostat.decrease();
       expect(thermostat.degrees).toBe(19);
     });
 
     it('cannot be decreased below the minimum temperature', function() {
       expect(function() {
-        thermostat.decrease(11);
+        for (var i = 0; i < 11; i++) {
+          thermostat.decrease();
+        }
       }).toThrowError("Temperature cannot be decreased any further.");
     });
   });

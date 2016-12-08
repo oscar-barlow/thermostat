@@ -8,12 +8,12 @@ Thermostat.prototype.increase = function() {
   this.degrees += 1;
 };
 
-Thermostat.prototype.decrease = function(value) {
+Thermostat.prototype.decrease = function() {
   const MINIMUM_TEMPERATURE = 10;
-  if ((this.degrees - value) < MINIMUM_TEMPERATURE) {
+  if (this.degrees <= MINIMUM_TEMPERATURE) {
     throw new Error("Temperature cannot be decreased any further.");
   } else {
-    this.degrees -= value;
+    this.degrees -= 1;
   }
 };
 
