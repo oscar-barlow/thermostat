@@ -70,6 +70,14 @@ describe('Thermostat', function() {
       expect(thermostat.usage).toEqual('medium-usage');
     });
 
+    it("returns medium_usage if temperature is decreased below 18, then raised again", function() {
+      for (var i = 0; i < 3; i++) {
+        thermostat.decrease();
+      }
+      thermostat.increase();
+      expect(thermostat.usage).toEqual('medium-usage');
+    });
+
     it("returns low-usage if temperature is <18", function(){
       for (var i = 0; i < 3; i++) {
         thermostat.decrease();
@@ -84,6 +92,5 @@ describe('Thermostat', function() {
       }
       expect(thermostat.usage).toEqual("high-usage");
     });
-
   });
 });
