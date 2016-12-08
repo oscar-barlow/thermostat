@@ -70,5 +70,12 @@ describe('Thermostat', function() {
       expect(thermostat.usage).toEqual('medium-usage');
     });
 
+    it("returns low-usage if temperature is <18", function(){
+      for (var i = 0; i < 3; i++) {
+        thermostat.decrease();
+      }
+      expect(thermostat.usage).toEqual('low-usage');
+    });
+
   });
 });

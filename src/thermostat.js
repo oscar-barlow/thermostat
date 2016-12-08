@@ -23,6 +23,9 @@ Thermostat.prototype.decrease = function() {
     throw new Error("Temperature cannot be decreased any further.");
   }
   this.degrees -= 1;
+  if (this.degrees < 18) {
+    this.usage = "low-usage";
+  }
 };
 
 Thermostat.prototype.reset = function(){
