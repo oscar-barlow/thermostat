@@ -9,6 +9,10 @@ $( document ).ready(function(){
     $(button).addClass('blue');
   };
 
+  var clearActive = function(button) {
+    $(button).removeClass('blue');
+  };
+
   showActive('#power-saving-on');
   updateDisplay();
 
@@ -25,10 +29,12 @@ $( document ).ready(function(){
   $('#power-saving-on').click(function() {
     thermostat.setPowerSaving(true);
     showActive('#power-saving-on');
+    clearActive('#power-saving-off')
   });
 
   $('#power-saving-off').click(function() {
     thermostat.setPowerSaving(false);
     showActive('#power-saving-off');
+    clearActive('#power-saving-on');
   });
 });
