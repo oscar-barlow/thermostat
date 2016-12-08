@@ -1,11 +1,13 @@
 $( document ).ready(function(){
   var thermostat = new Thermostat();
-
-  $('#display').text(thermostat.degrees);
+  var updateDisplay = function() {
+    $('#display').text(thermostat.degrees);
+  };
+  updateDisplay();
 
   $('#temp-up').click(function() {
     thermostat.increase();
-    $('#display').text(thermostat.degrees);
+    updateDisplay();
   });
 
 });
