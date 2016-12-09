@@ -1,11 +1,23 @@
 
 $(document).ready(function() {
   var thermostat = new Thermostat
-  $("#temp-display").text(thermostat.temperature);
+  $("#temp-display").text(thermostat.temperature + "°C");
   $(document).click(function(){
     updateTemperature();
     updatePowerSaving();
   })
+
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=ec56c5c96e6052e6e3abed6270cd50bf&units=metric', function(data) {
+  $("#temp-outside").text("Temperature outside: " + data.main.temp + "°C");
+});
+
+$('#current-city').change(function() {
+  var city = $('#current-city').val();
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
+    $('#temp-outside').text("Temperature outside: " + data.main.temp + "°C")
+  })
+});
+
   $("#regulation-up").click(function() {
     thermostat.up();
   });
@@ -27,7 +39,7 @@ $(document).ready(function() {
   })
 
   function updateTemperature(){
-    $("#temp-display").text(thermostat.temperature);
+    $("#temp-display").text(thermostat.temperature + "°C");
     $('#temp-display').attr('class', thermostat.energyUsage());
   }
   function updatePowerSaving() {
